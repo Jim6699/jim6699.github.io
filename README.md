@@ -1,2 +1,2 @@
 # some_pages
-for show or for online_control
+you have no power to acess
