@@ -12,7 +12,7 @@
   <tr>
     <td>
       <a href="https://blog.csdn.net/aimersong69" target="_blank">
-        <img width="50%" height="50%" align="center" src="https://p1.ssl.qhimg.com/dr/270_500_/t0173b711ab8cede20c.png?size=460x280" alt="CSDN">
+        <img width=""  align="center" src="https://p1.ssl.qhimg.com/dr/270_500_/t0173b711ab8cede20c.png?size=460x280" alt="CSDN">
       </a>
     </td>
     <td>
