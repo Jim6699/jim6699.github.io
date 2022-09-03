@@ -1,7 +1,4 @@
- <iframe  
- height=850 
- width=90% 
- src="http://mctool.wangmingchang.com/index/jspay/dashang"  
- frameborder=0  
- allowfullscreen>
- </iframe>
+|左对齐|居中对齐|右对齐|
+|:-    |:------:|-:|
+|左对齐列|居中对齐列|右对齐列|
+|1|2|3|
