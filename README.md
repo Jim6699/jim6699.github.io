@@ -1,7 +1,7 @@
 <h2></h2>
 <blockquote>Hello the world ~ </blockquote>
 <p><img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25" alt="手势"> 欢迎来到我的世界</p>
-<img width="60%" align="center" src="https://www.bing.com/th?id=OHR.SeitanLimania_EN-US5452823219_1920x1080.jpg&amp;rf=LaDigue_1920x1080.jpg&amp;pid=hp" alt="background">
+<img width="100%" align="center" src="https://www.bing.com/th?id=OHR.SeitanLimania_EN-US5452823219_1920x1080.jpg&amp;rf=LaDigue_1920x1080.jpg&amp;pid=hp" alt="background">
 <h2>☕ 社交</h2>
 <p>关注我，一起开心写代码，快乐学编程！</p>
 <table>
