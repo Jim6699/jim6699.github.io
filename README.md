@@ -1,8 +1,8 @@
 <blockquote>
 <img src="https://v1.jinrishici.com/all.svg" style="max-width:100%;">
 </blockquote>
-<p><img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25" alt="手势"> Hello the world ！</p>
 <img width="100%" align="center" src="https://picsum.photos/1920/1080" alt="background">
+<p><img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25" alt="手势"> Hello the world ！</p>
 <h2>💼 项目</h2>
 <p>下面是我在学python的路上写的一些个人项目，有为了工作完成编写的脚本，也有生活中一些有用的脚本...</p>
 <table>
