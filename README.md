@@ -1,4 +1,7 @@
-<blockquote>山中何事？松花酿酒，春水煎茶。</blockquote>
+<blockquote>
+山中何事？松花酿酒，春水煎茶。
+<img src="https://v1.jinrishici.com/all.svg" style="max-width:100%;">
+</blockquote>
 <p><img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25" alt="手势"> Hello the world ！</p>
 <img width="100%" align="center" src="https://picsum.photos/1920/1080" alt="background">
 <h2>💼 项目</h2>
