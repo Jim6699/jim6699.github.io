@@ -1,7 +1,7 @@
 <h2></h2>
 <blockquote>Hello the world ~ </blockquote>
 <p><img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25" alt="手势"> 欢迎来到我的世界</p>
-<img width="100%" align="center" src="https://www.bing.com/th?id=OHR.SeitanLimania_EN-US5452823219_1920x1080.jpg&amp;rf=LaDigue_1920x1080.jpg&amp;pid=hp" alt="background">
+<img width="60%" align="center" src="https://www.bing.com/th?id=OHR.SeitanLimania_EN-US5452823219_1920x1080.jpg&amp;rf=LaDigue_1920x1080.jpg&amp;pid=hp" alt="background">
 <h2>☕ 社交</h2>
 <p>关注我，一起开心写代码，快乐学编程！</p>
 <table>
@@ -15,24 +15,10 @@
         <img src="./src/images/utils/gongzhonghao.gif" alt="公众号">
       </a>
     </td>
+
     <td>
-      <a href="https://www.zhihu.com/people/haixiangyan" target="_blank">
-        <img src="./src/images/icons/zhihu.png" alt="知乎">
-      </a>
-    </td>
-    <td>
-      <a href="https://juejin.cn/user/272334614432887" target="_blank">
-        <img src="./src/images/icons/juejin.png" alt="掘金">
-      </a>
-    </td>
-    <td>
-      <a href="https://www.jianshu.com/u/0340be4082b5" target="_blank">
-        <img src="./src/images/icons/jianshu.png" alt="简书">
-      </a>
-    </td>
-    <td>
-      <a href="https://medium.com/@haixiang6123" target="_blank">
-        <img src="./src/images/icons/medium.png" alt="Medium">
+      <a href="https://blog.csdn.net/aimersong69" target="_blank">
+        <img src="https://img-home.csdnimg.cn/images/20201124032511.png" alt="CSDN">
       </a>
     </td>
   </tr>
