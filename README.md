@@ -2,7 +2,7 @@
 <p><img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25" alt="手势"> 欢迎来到我的世界</p>
 <img width="100%" align="center" src="https://www.bing.com/th?id=OHR.SeitanLimania_EN-US5452823219_1920x1080.jpg&amp;rf=LaDigue_1920x1080.jpg&amp;pid=hp" alt="background">
 <h2>☕ 社交</h2>
-<p>关注我，一起开心写代码，快乐学编程！</p>
+<p>公众号是福利资讯分享（目前停运了很久） | CSDN还在不定期更新，关注我，我们一起快乐学编程！</p>
 <table>
   <tr>
     <th><a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzIyNjQ3NzE4OQ==&action=getalbum&album_id=1802429374739038210&scene=173&from_msgid=2247485410&from_itemidx=1&count=3&nolastread=1&devicetype=android-30&version=2800143d&lang=zh_CN&nettype=cmnet&ascene=59&session_us=gh_49a25e669b02&pass_ticket=TTkMfbcFiDHu6ZSeZdME720CVQoO8p2OLBnt8NY6qAs9DOGI8GGEs09VLCGBbP%2Bt&wx_header=3" target="_blank">公众号</a></th>
@@ -39,8 +39,7 @@
       </th>
       <th>🎮 守望先锋 UI 库</th>
       <th>
-        <img src="https://img.shields.io/badge/Vue.js-35495E?style=flat-square&amp;logo=vue.js&amp;logoColor=4FC08" alt="badge">
-        <img src="https://img.shields.io/badge/Sass-CC6699?style=flat-square&amp;logo=sass&amp;logoColor=white" alt="badge">
+        <img src="https://img.shields.io/badge/python-blue" alt="badge">
       </th>
     </tr>
 
