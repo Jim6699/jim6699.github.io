@@ -15,87 +15,12 @@
         <img src="./src/images/utils/gongzhonghao.gif" alt="公众号">
       </a>
     </td>
-
     <td>
       <a href="https://blog.csdn.net/aimersong69" target="_blank">
         <img src="https://img-home.csdnimg.cn/images/20201124032511.png" alt="CSDN">
       </a>
     </td>
   </tr>
-</table>
-<h2>📚 小书</h2>
-<p>当一篇博文讲得东西非常多，或者内容非常长的时候，我就会把它变成一本在线小书。所在小书皆可免费食用 🍝、无限转载 📣，唯一要求是转载时加上【写代码的海怪】作者出处即可。</p>
-<table>
-  <thead align="center">
-    <tr>
-      <th>封面</th>
-      <th>书名</th>
-      <th>简述</th>
-      <th>成就</th>
-    </tr>
-  </thead>
-  <tbody align="left">
-    <tr>
-      <th align="center">
-        <img width="80" src="./src/images/covers/wheel.jpg" alt="《一起来造轮子》">
-      </th>
-      <th>
-        <a href="https://github.com/haixiangyan/make-wheels" target="_blank">《一起来造轮子》</a>
-      </th>
-      <th>前端进阶必看的造轮子小书</th>
-      <th>
-        <img src="https://img.shields.io/github/stars/haixiangyan/make-wheels?style=flat-square" alt="badge">
-        <img src="https://img.shields.io/github/forks/haixiangyan/make-wheels?style=flat-square" alt="badge">
-      </th>
-    </tr>
-    <tr>
-      <th align="center">
-        <img width="80" src="./src/images/covers/jest.jpeg" alt="《Jest 实践指南》">
-      </th>
-      <th>
-        <a href="https://github.com/haixiangyan/jest-tutorial" target="_blank">《Jest 实践指南》</a>
-      </th>
-      <th>Jest 上手完全指南，从 0 到 1 学会前端测试的技巧、思路、策略和套路。</th>
-      <th>
-        <img src="https://img.shields.io/github/stars/haixiangyan/jest-tutorial?style=flat-square" alt="badge">
-      </th>
-    </tr>
-    <tr>
-      <th align="center">
-        <img width="80" src="./src/images/covers/linter.jpg" alt="《前端 Linter 上手完全指南》">
-      </th>
-      <th>
-        <a href="https://github.yanhaixiang.com/linter-tutorial/" target="_blank">《前端 Linter 上手完全指南》</a>
-      </th>
-      <th>前端最全的关于 Linter 的上手小书</th>
-      <th>
-        <img src="https://img.shields.io/github/stars/haixiangyan/linter-tutorial?style=flat-square" alt="badge">
-      </th>
-    </tr>
-    <tr>
-      <th align="center">
-        <img width="80" src="./src/images/covers/wecom.jpg" alt="《企业微信侧边栏开发指南》">
-      </th>
-      <th>
-        <a href="https://wecom-sidebar.github.io/" target="_blank">《企业微信侧边栏开发指南》</a>
-      </th>
-      <th>企业微信侧边栏开发指南以及一系列的开发模板</th>
-      <th>
-        <img src="https://img.shields.io/github/stars/wecom-sidebar?style=flat-square" alt="badge">
-      </th>
-    </tr>
-    <tr>
-      <th align="center">
-        <img width="80" src="./src/images/covers/keng.jpg" alt="《坑》">
-      </th>
-      <th>
-        <a href="https://github.com/haixiangyan/keng" target="_blank">《坑》</a>
-      </th>
-      <th>【连载中...】我在开发过程中遇到的坑</th>
-      <th>
-      </th>
-    </tr>
-  </tbody>
 </table>
 <h2>💼 项目</h2>
 <p>下面是我在学前端的路上写的一些个人项目，有的比较认真 🧐，有的只是为了好玩 🎮，有的比较沙雕 🤪。</p>
