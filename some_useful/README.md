@@ -1,4 +1,7 @@
-<img src="https://v1.jinrishici.com/all.svg" style="max-width:100%;">
+{% dplayer "url=http://home.ustc.edu.cn/~mmmwhy/GEM.mp4"  "pic=http://home.ustc.edu.cn/~mmmwhy/GEM.jpg" "loop=yes" "theme=#FADFA3" "autoplay=false" "token=tokendemo" %}
+<embed autostart="true" hidden="true" loop="true" src="http://ois5yh1xg.bkt.clouddn.com/%E5%8D%A2%E5%86%A0%E5%BB%B7%E4%B8%80%E7%94%9F%E6%89%80%E7%88%B1.mp3"></embed>
+
+
 
 
 |左对齐|居中对齐|右对齐|
