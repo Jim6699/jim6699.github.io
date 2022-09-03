@@ -1,17 +1,13 @@
-<h2>☀️ 今天</h2>
-<blockquote>最后更新于 2022年09月03日 06时40分（每天早上 6:30 自动更新）</blockquote>
-<img src="https://visitor-badge.glitch.me/badge?page_id=haixiangyan" alt="visitor badge"/><img src="https://github.com/haixiangyan/haixiangyan/actions/workflows/node.js.yml/badge.svg" alt="build badge" />
-<p>哈喽，<img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25" alt="手势"> 我是海怪，坐标深圳。每天分享一图：</p>
+<h2></h2>
+<blockquote>Hello the world ~ </blockquote>
+<p><img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25" alt="手势"> 欢迎来到我的世界</p>
 <img width="100%" align="center" src="https://www.bing.com/th?id=OHR.SeitanLimania_EN-US5452823219_1920x1080.jpg&amp;rf=LaDigue_1920x1080.jpg&amp;pid=hp" alt="background">
-<h2>🙌 社交</h2>
-<p>经常在各大平台出没 👻，可以搜索我的全网账号<b>【写代码的海怪】</b>找到我。每周定期更新一篇博文，关注我，一起开心写代码，快乐学编程 💪！</p>
+<h2>☕ 社交</h2>
+<p>关注我，一起开心写代码，快乐学编程！</p>
 <table>
   <tr>
     <th><a href="#" target="_blank">公众号</a></th>
-    <th><a href="https://www.zhihu.com/people/haixiangyan" target="_blank">知乎</a></th>
-    <th><a href="https://juejin.cn/user/272334614432887" target="_blank">掘金</a></th>
-    <th><a href="https://www.jianshu.com/u/0340be4082b5" target="_blank">简书</a></th>
-    <th><a href="https://medium.com/@haixiang6123" target="_blank">Medium</a></th>
+    <th><a href="https://blog.csdn.net/aimersong69" target="_blank">CSDN</a></th>
   </tr>
   <tr>
     <td>
