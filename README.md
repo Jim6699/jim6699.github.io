@@ -34,15 +34,24 @@
   <tbody align="left">
     <tr>
       <th>
-        <a href="https://github.yanhaixiang.com/overwatch-ui-doc/#/" target="_blank">
-        overwatch-ui</a>
+        <a href="https://github.com/Jim6699/Python_scripts" target="_blank">
+        Python_scripts</a>
       </th>
-      <th>🎮 守望先锋 UI 库</th>
+      <th>满满实用的科技活【免费代理、免费电话、多彩校园、流海云印签到、羿文教育签到、菜鸟图库签到、青柠疫服打卡】</th>
       <th>
         <img src="https://img.shields.io/badge/python-blue" alt="badge">
       </th>
     </tr>
-
+    <tr>
+      <th>
+        <a href="https://github.com/Jim6699/python_for_HRM" target="_blank">
+        python_for_HRM</a>
+      </th>
+      <th>人力资源管理中的Python运用</th>
+      <th>
+        <img src="https://img.shields.io/badge/python-blue" alt="badge">
+      </th>
+    </tr>
 
   </tbody>
 </table>
