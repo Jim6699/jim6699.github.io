@@ -6,13 +6,13 @@
 <p>关注我，一起开心写代码，快乐学编程！</p>
 <table>
   <tr>
-    <th><a href="#" target="_blank">公众号</a></th>
+    <th><a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzIyNjQ3NzE4OQ==&action=getalbum&album_id=1802429374739038210&scene=173&from_msgid=2247485410&from_itemidx=1&count=3&nolastread=1&devicetype=android-30&version=2800143d&lang=zh_CN&nettype=cmnet&ascene=59&session_us=gh_49a25e669b02&pass_ticket=TTkMfbcFiDHu6ZSeZdME720CVQoO8p2OLBnt8NY6qAs9DOGI8GGEs09VLCGBbP%2Bt&wx_header=3" target="_blank">公众号</a></th>
     <th><a href="https://blog.csdn.net/aimersong69" target="_blank">CSDN</a></th>
   </tr>
   <tr>
     <td>
-      <a href="#" target="_blank">
-        <img src="./src/images/utils/gongzhonghao.gif" alt="公众号">
+      <a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzIyNjQ3NzE4OQ==&action=getalbum&album_id=1802429374739038210&scene=173&from_msgid=2247485410&from_itemidx=1&count=3&nolastread=1&devicetype=android-30&version=2800143d&lang=zh_CN&nettype=cmnet&ascene=59&session_us=gh_49a25e669b02&pass_ticket=TTkMfbcFiDHu6ZSeZdME720CVQoO8p2OLBnt8NY6qAs9DOGI8GGEs09VLCGBbP%2Bt&wx_header=3" target="_blank">
+        <img src="https://res.wx.qq.com/mpres/zh_CN/htmledition/pages/login/loginpage/images/new_bg_logo605591.svg" alt="公众号">
       </a>
     </td>
     <td>
