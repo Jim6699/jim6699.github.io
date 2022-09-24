@@ -16,20 +16,20 @@
   <tbody align="left">
     <tr>
       <th>
-        <a href="https://github.com/Jim6699/Python_scripts" target="_blank">
-        Python_scripts</a>
+        <a href="https://github.com/Jim6699/python_for_HRM" target="_blank">
+        python_for_HRM</a>
       </th>
-      <th>有用的脚本库：免费代理、免费电话、多彩校园、流海云印签到、羿文教育签到、菜鸟图库签到、青柠疫服打卡</th>
+      <th>人力资源管理中的Python运用：批量劳动合同/实习协议、离职证明生成、工资条群发、简历信息爬取</th>
       <th>
         <img src="https://img.shields.io/badge/python-blue" alt="badge">
       </th>
     </tr>
     <tr>
       <th>
-        <a href="https://github.com/Jim6699/python_for_HRM" target="_blank">
-        python_for_HRM</a>
+        <a href="https://github.com/Jim6699/Python_scripts" target="_blank">
+        Python_scripts</a>
       </th>
-      <th>人力资源管理中的Python运用：批量劳动合同/实习协议、离职证明生成、工资条群发、简历信息爬取</th>
+      <th>有用的脚本库：免费代理、免费电话、多彩校园、流海云印签到、羿文教育签到、菜鸟图库签到、青柠疫服打卡</th>
       <th>
         <img src="https://img.shields.io/badge/python-blue" alt="badge">
       </th>
