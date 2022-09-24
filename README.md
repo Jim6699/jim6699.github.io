@@ -47,7 +47,7 @@
   <tr>
     <td>
       <a href="https://blog.csdn.net/aimersong69" target="_blank">
-        <img width=""  align="center" src="https://s1.328888.xyz/2022/09/03/1FUXj.png" alt="CSDN">
+        <img heigth='80%' align="center" src="https://s1.328888.xyz/2022/09/03/1FUXj.png" alt="CSDN">
       </a>
     </td>
     <td>
