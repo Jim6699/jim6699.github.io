@@ -29,7 +29,7 @@
         <a href="https://github.com/Jim6699/Python_scripts" target="_blank">
         Python_scripts</a>
       </th>
-      <th>有用的脚本库：免费代理、免费电话、多彩校园、流海云印签到、羿文教育签到、菜鸟图库签到、青柠疫服打卡</th>
+      <th>有用的脚本库：免费代理、免费电话、多彩校园、流海云印签到、羿文教育签到、菜鸟图库签到、青柠疫服打卡、牛客网答案爬取</th>
       <th>
         <img src="https://img.shields.io/badge/python-blue" alt="badge">
       </th>
