@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>合同及试用期计算</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .btn {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>合同及试用期计算器</h1>
+        <div class="form-group">
+            <label for="start-date">入职日期：</label>
+            <input type="date" id="start-date">
+        </div>
+        <div class="form-group">
+            <label for="probation-period">试用期期限（月）：</label>
+            <input type="number" id="probation-period" min="1">
+        </div>
+        <button class="btn" onclick="calculateContractAndProbation()">计算</button>
+        <div id="result" class="result"></div>
+    </div>
+    
+    <script>
+        function calculateContractAndProbation() {
+            var startDate = new Date(document.getElementById("start-date").value);
+            var probationPeriod = parseInt(document.getElementById("probation-period").value);
+            
+            var contractEndDate;
+            var probationEndDate;
+            
+            // 计算合同结束日期
+            if (startDate.getMonth() >= 0 && startDate.getMonth() <= 2) {
+                contractEndDate = new Date(startDate.getFullYear() + 2, 2, 31);
+            } else if (startDate.getMonth() >= 3 && startDate.getMonth() <= 5) {
+                contractEndDate = new Date(startDate.getFullYear() + 2, 5, 30);
+            } else if (startDate.getMonth() >= 6 && startDate.getMonth() <= 8) {
+                contractEndDate = new Date(startDate.getFullYear() + 2, 8, 30);
+            } else if (startDate.getMonth() >= 9 && startDate.getMonth() <= 11) {
+                contractEndDate = new Date(startDate.getFullYear() + 2, 11, 31);
+            }
+            
+            // 计算试用期结束日期
+            if (probationPeriod < 6) {
+                if (startDate.getDate() <= 6) {
+                    probationEndDate = new Date(startDate.getFullYear(), startDate.getMonth() + probationPeriod, 0);
+                } else {
+                    probationEndDate = new Date(startDate.getFullYear(), startDate.getMonth() + probationPeriod + 1, 0);
+                }
+            } else if (probationPeriod === 6) {
+                probationEndDate = new Date(startDate.getFullYear(), startDate.getMonth() + probationPeriod,startDate.getDate() - 1);
+            }
+            
+            // 格式化日期为字符串
+            var contractStartDateString = formatDate(startDate);
+            var contractEndDateString = formatDate(contractEndDate);
+            
+            var probationStartDateString = formatDate(startDate);
+            var probationEndDateString = formatDate(probationEndDate);
+            
+            // 显示结果
+            var resultElement = document.getElementById("result");
+            resultElement.innerHTML = "合同日期： " + contractStartDateString + " 至 " + contractEndDateString + "<br>"
+                                     + "试用期： " + probationStartDateString + " 至 " + probationEndDateString;
+        }
+        
+        function formatDate(date) {
+            var year = date.getFullYear();
+            var month = addLeadingZero(date.getMonth() + 1);
+            var day = addLeadingZero(date.getDate());
+            
+            return year + "年" + month + "月" + day + "日";
+        }
+        
+        function addLeadingZero(num) {
+            if (num < 10) {
+                return "0" + num;
+            }
+            return num.toString();
+        }
+    </script>
+</body>
+</html>
