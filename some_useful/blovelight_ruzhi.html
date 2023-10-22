@@ -7,14 +7,14 @@
             font-family: Arial, sans-serif;
         }
         .container {
-            width: 500px;
-            margin: 0 auto;
-            padding: 20px;
-            border-radius: 10px;
+            width: 98%;
+            margin: 10 auto;
+            padding: 50px;
+            border-radius: 18px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
         }
         .form-group {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
         .btn {
             padding: 8px 16px;
@@ -34,13 +34,13 @@
 </head>
 <body>
     <div class="container">
-        <h1>合同及试用期计算器</h1>
+        <h1>合同签订教程</h1>
         <div class="form-group">
             <label for="start-date">入职日期：</label>
             <input type="date" id="start-date">
         </div>
         <div class="form-group">
-            <label for="probation-period">试用期期限（月）：</label>
+            <label for="probation-period">试用期（月）：</label>
             <input type="number" id="probation-period" min="1">
         </div>
         <button class="btn" onclick="calculateContractAndProbation()">计算</button>
@@ -87,7 +87,8 @@
             // 显示结果
             var resultElement = document.getElementById("result");
             resultElement.innerHTML = "合同日期： " + contractStartDateString + " 至 " + contractEndDateString + "<br>"
-                                     + "试用期： " + probationStartDateString + " 至 " + probationEndDateString;
+                                     + "试用期： " + probationStartDateString + " 至 " + probationEndDateString+ "<br>"
+                                     + "工资：2100";
         }
         
         function formatDate(date) {
