@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>合同及试用期计算</title>
+    <title>BLOVELIGHT</title>
     <style>
         body {
             font-family: Arial, sans-serif;
         }
         .container {
-            width: 98%;
-            margin: 10 auto;
+            width: 80%;
+            margin: auto;
             padding: 50px;
             border-radius: 18px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
@@ -30,13 +30,19 @@
             background-color: #f2f2f2;
             padding: 10px;
         }
+        .result img {
+            display: inline-block;
+            margin-right: 10px;
+            max-width: 100%;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>合同签订教程</h1>
+        <h1 style="font-size:30px; text-align:center;">合同签订教程</h1>
+        <h5 style="color:red; text-align:center;">注意：二次入厂的员工，合同签订不适用本方法，请告知HR</h5>
         <div class="form-group">
-            <label for="start-date">入职日期：</label>
+            <label for="start-date">正式上班日期：</label>
             <input type="date" id="start-date">
         </div>
         <div class="form-group">
@@ -86,9 +92,20 @@
             
             // 显示结果
             var resultElement = document.getElementById("result");
-            resultElement.innerHTML = "合同日期： " + contractStartDateString + " 至 " + contractEndDateString + "<br>"
-                                     + "试用期： " + probationStartDateString + " 至 " + probationEndDateString+ "<br>"
-                                     + "工资：2100";
+            resultElement.innerHTML = `<img src="https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/47d1123a5571f79070f2d62eb47416914259c2cb5b2d64b4cd19f1ec187fd86f5d9606e6083a22501516b056522eb193?pictype=scale&from=30113&version=3.3.3.3&fname=1.png&size=750"> <br>
+					<br>乙方信息请根据自己信息填写（姓名处需要盖拇指印）<br><br>	
+				    <img src="https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/62742875711e717dd480eb98fddc8a34c74dcd300647cdd7623dffb754769c2c0ffb76272683dce3748fec514e90cf82?pictype=scale&from=30113&version=3.3.3.3&fname=2.png&size=750"> <br>
+					<br>固定期限的劳动合同： ${contractStartDateString} 至 ${contractEndDateString} <br><br>
+                                    <img src="https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/4fee6f46db7939e691e60c88148b33d90194b1f604dc39a93d6301ae486ab14f048690fee217e16038618f15e9527355?pictype=scale&from=30113&version=3.3.3.3&fname=3.png&size=750"> <br>
+					<br>试用期： ${probationStartDateString} 至 ${probationEndDateString} <br><br>
+                                    <img src="https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/b09296f6de135781fdb74634ffc25b91c240501e8abb8bf44d7ee5cdf05658d33b03bf60e9bdfa677cb9a91f88d95b35?pictype=scale&from=30113&version=3.3.3.3&fname=4.png&size=750"> <br>
+					<br>岗位：请询问办理入职人员<br><br>
+                                    <img src="https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/a8f0c7d9c14823086ca6891854619eeed6160490737de1d9f5f421bcca191a63572e6578e0ccac91006a0ea714f5f683?pictype=scale&from=30113&version=3.3.3.3&fname=5.png&size=750"> <br>
+					<br>工资：2100<br><br>
+                                    <img src="https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/af9d7d462031e4350474d7bd46551f8fb19d577fe9a1a8353d6a6bd8fa7fc42ad4fac78930526d63961fd5470c4cea53?pictype=scale&from=30113&version=3.3.3.3&fname=6.png&size=750"> <br>
+					<br>职位危害：请询问办理入职人员<br><br>
+                                    <img src="https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/b15945d6fb2784b43dd203b8cc1ed828093cc9a8d0105f2b282ee8ef07845b5d2e4a632b3fabd2fece32ce7dd5e35521?pictype=scale&from=30113&version=3.3.3.3&fname=7.png&size=750"> <br>
+					<br>乙方信息请根据自己信息填写（姓名处需要盖拇指印）<br><br>`;
         }
         
         function formatDate(date) {
