@@ -63,13 +63,13 @@
             
             // 计算合同结束日期
             if (startDate.getMonth() >= 0 && startDate.getMonth() <= 2) {
-                contractEndDate = new Date(startDate.getFullYear() + 2, 2, 31);
+                contractEndDate = new Date(startDate.getFullYear() + 3, 2, 31);
             } else if (startDate.getMonth() >= 3 && startDate.getMonth() <= 5) {
-                contractEndDate = new Date(startDate.getFullYear() + 2, 5, 30);
+                contractEndDate = new Date(startDate.getFullYear() + 3, 5, 30);
             } else if (startDate.getMonth() >= 6 && startDate.getMonth() <= 8) {
-                contractEndDate = new Date(startDate.getFullYear() + 2, 8, 30);
+                contractEndDate = new Date(startDate.getFullYear() + 3, 8, 30);
             } else if (startDate.getMonth() >= 9 && startDate.getMonth() <= 11) {
-                contractEndDate = new Date(startDate.getFullYear() + 2, 11, 31);
+                contractEndDate = new Date(startDate.getFullYear() + 3, 11, 31);
             }
             
             // 计算试用期结束日期
