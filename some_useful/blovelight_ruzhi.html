@@ -24,6 +24,9 @@
             border-radius: 4px;
             cursor: pointer;
         }
+	.btn-selected {
+	    background-color: green !important;
+	}
         .result {
             margin-top: 20px;
             border-radius: 10px;
@@ -45,15 +48,30 @@
             <label for="start-date">正式上班日期：</label>
             <input type="date" id="start-date">
         </div>
-        <div class="form-group">
-            <label for="probation-period">试用期（月）：</label>
-            <input type="number" id="probation-period" min="1">
-        </div>
+	<div class="form-group">
+	    <label for="probation-period">试用期（月）：</label>
+	    <div class="btn-group" data-toggle="buttons">
+	        <button type="button" class="btn btn-secondary" onclick="setPeriod(1)" id="btn-1">1个月</button>
+	        <button type="button" class="btn btn-secondary" onclick="setPeriod(3)" id="btn-3">3个月</button>
+	        <button type="button" class="btn btn-secondary" onclick="setPeriod(6)" id="btn-6">6个月</button>
+	        <input type="number" id="probation-period" min="1" style="opacity: 0.05;">
+	    </div>
+	</div>
         <button class="btn" onclick="calculateContractAndProbation()">计算</button>
         <div id="result" class="result"></div>
     </div>
     
     <script>
+	function setPeriod(months) {
+	    var buttons = document.getElementsByClassName('btn');
+	    for (var i = 0; i < buttons.length; i++) {
+	        buttons[i].classList.remove('btn-selected');
+	    }
+	    var selectedButton = document.getElementById('btn-' + months);
+	    selectedButton.classList.add('btn-selected');
+	    console.log(months);
+	    document.getElementById("probation-period").value = months;
+	}
         function calculateContractAndProbation() {
             var startDate = new Date(document.getElementById("start-date").value);
             var probationPeriod = parseInt(document.getElementById("probation-period").value);
