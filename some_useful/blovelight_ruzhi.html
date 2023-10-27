@@ -62,7 +62,7 @@
 	        <input type="number" id="probation-period" min="1" style="opacity: 0.05;">
 	    </div>
 	</div>
-        <button class="btn1" onclick="calculateContractAndProbation()">点我得出结果</button>
+        <button class="btn1" onclick="calculateContractAndProbation()">点我获取教程 👌</button>
         <div id="result" class="result"></div>
     </div>
     
@@ -80,7 +80,10 @@
         function calculateContractAndProbation() {
             var startDate = new Date(document.getElementById("start-date").value);
             var probationPeriod = parseInt(document.getElementById("probation-period").value);
-            
+            if (isNaN(startDate) || isNaN(probationPeriod)) {
+                alert("必填信息未选择完全！");
+                return; 
+            }
             var contractEndDate;
             var probationEndDate;
             
