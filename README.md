@@ -1,7 +1,7 @@
 <blockquote>
 <img src="https://v1.jinrishici.com/all.svg" style="max-width:100%;">
 </blockquote>
-<img width="100%" align="center" src="https://api.ixiaowai.cn/gqapi/gqapi.php" alt="background">
+<img width="100%" align="center" src="https://api.isoyu.com/bing_images.php" alt="background">
 <p><img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25" alt="手势"> Hello the world ！</p>
 <h2>请直接看GITHUB主页，此页面信息许久未更新</h2>
 <h2>💼 项目</h2>
