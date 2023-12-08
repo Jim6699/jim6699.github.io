@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        code {
+            display: block;
+            white-space: pre-wrap;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>BY SUNG</h2>
+    <label for="inputData">请从EXCEL复制名字（竖排）粘贴：</label>
+    <textarea id="inputData"></textarea>
+    <button onclick="runScript()">运行</button>
+    <h3>生成的JavaScript代码：</h3>
+    <h4>OA工牌界面，按F12，在控制台中运行</h4>
+    <code id="outputCode"></code>
+
+    <script>
+        function processNames(inputText) {
+            const names = [];
+            for (const line of inputText.split('\n')) {
+                const cleanedLine = line.trim();
+                if (cleanedLine) {
+                    names.push(cleanedLine);
+                }
+            }
+            return names;
+        }
+
+        function runScript() {
+            const inputElement = document.getElementById('inputData');
+            const inputText = inputElement.value;
+
+            const resultNames = processNames(inputText);
+
+            const outputCodeElement = document.getElementById('outputCode');
+            const generatedCode = `
+document.querySelector('.el-button--success').click();
+setTimeout(function() {
+    const names = ${JSON.stringify(resultNames, null, 0)};
+    let currentIndex = 0;
+    function processName() {
+        var inputElement = document.querySelectorAll('.el-input__inner')[2];
+        inputElement.value = names[currentIndex];
+        var inputEvent = new Event('input', { bubbles: true });
+        inputElement.dispatchEvent(inputEvent);
+        setTimeout(function() {
+            const searchIcon = document.querySelector('.el-icon-search');
+            const clickEvent = new MouseEvent('click', { bubbles: true });
+            searchIcon.dispatchEvent(clickEvent);
+        }, 1000);
+        setTimeout(function() {
+            document.querySelector('.el-table_2_column_7 .el-checkbox__original').click();
+            currentIndex++;
+            if (currentIndex < names.length) {
+                processName();
+            } else {
+                alert("全部完毕，请点击蓝色的“确认”按钮");
+            }
+        }, 3000);
+    }
+    processName();
+}, 2000);
+`;
+
+            outputCodeElement.textContent = generatedCode;
+
+            // Copy the generated code to the clipboard
+            copyToClipboard(generatedCode);
+
+            // Notify the user
+            alert("JavaScript代码已自动复制到剪贴板");
+
+            // Uncomment the next line to automatically execute the generated code.
+            // eval(generatedCode);
+        }
+
+        function copyToClipboard(text) {
+            // Create a temporary textarea to copy the text
+            const tempTextarea = document.createElement('textarea');
+            tempTextarea.value = text;
+            document.body.appendChild(tempTextarea);
+
+            // Select the text and copy it
+            tempTextarea.select();
+            document.execCommand('copy');
+
+            // Remove the temporary textarea
+            document.body.removeChild(tempTextarea);
+        }
+    </script>
+</body>
+</html>
