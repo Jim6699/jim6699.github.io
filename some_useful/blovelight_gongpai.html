@@ -72,7 +72,7 @@ setTimeout(function() {
             const searchIcon = document.querySelector('.el-icon-search');
             const clickEvent = new MouseEvent('click', { bubbles: true });
             searchIcon.dispatchEvent(clickEvent);
-        }, 1000);
+        }, 3000);
         setTimeout(function() {
             document.querySelector('.el-table_2_column_7 .el-checkbox__original').click();
             currentIndex++;
@@ -81,7 +81,7 @@ setTimeout(function() {
             } else {
                 alert("全部完毕，请点击蓝色的“确认”按钮");
             }
-        }, 3000);
+        }, 10000);
     }
     processName();
 }, 2000);
