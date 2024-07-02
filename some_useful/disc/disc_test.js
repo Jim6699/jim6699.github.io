@@ -418,37 +418,9 @@ function showSummary() {
     container.innerHTML = result;
 
     const formattedResult = result.replace(/<\/?[^>]+(>|$)/g, '').replace(/\s+/g, '');
-    // 通过企业微信机器人推送结果
-    pushToWeChat(userName, formattedResult);
 }
 
-// 推送结果到企业微信机器人
-function pushToWeChat(userName, result) {
-    const webhookURL = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=2727181b-9456-494f-98db-9eb1391da96d';
-    const message = `${result}`;
 
-    fetch(webhookURL, {
-        method: 'POST',
-        mode: 'no-cors', 
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            msgtype: 'text',
-            text: {
-                content: message
-            }
-        })
-    }).then(response => {
-        if (response.ok) {
-            console.log('结果已成功推送至企业微信机器人。');
-        } else {
-            console.error('推送结果至企业微信机器人时出错。');
-        }
-    }).catch(error => {
-        console.error('推送结果时发生网络错误:', error);
-    });
-}
 
 document.addEventListener('DOMContentLoaded', () => {
     renderQuestion(currentQuestionIndex);
