@@ -56,7 +56,7 @@ const questions = [
     {
         question: "7. 您更符合哪一项？",
         answers: [
-            { text: "计划者：先做详尽的计划，并严格按计划进行，不想改动", value: "C" },
+            { text: "计划者：先做详尽的计划，并严格要计划进行，不想改动", value: "C" },
             { text: "耐性：不因延误而懊恼，冷静且能容忍", value: "S" },
             { text: "积极：相信自己有转危为安的能力", value: "D" },
             { text: "推动者：动用性格魅力或鼓励别人参与", value: "I" }
@@ -75,7 +75,7 @@ const questions = [
         question: "9. 您更符合哪一项？",
         answers: [
             { text: "迁就：改变自己以与他人协调，短时间内按他人要求行事", value: "S" },
-            { text: "井井有条：有系统有条理安排事情", value: "C" },
+            { text: "井井有条：有系统有条理安排事情的人", value: "C" },
             { text: "坦率：毫无保留，坦率发言", value: "I" },
             { text: "乐观：令他人和自己相信任何事情都会好转", value: "D" }
         ]
@@ -110,28 +110,28 @@ const questions = [
     {
         question: "13. 您更符合哪一项？",
         answers: [
-            { text: "理想主义：以自己完美的标准来设想衡量新事物", value: "C" },
-            { text: "独立：自给自足，独立自信，不需要他人帮忙", value: "D" },
-            { text: "无攻击性：不说或者做可能引起别人不满和反对的事情", value: "S" },
-            { text: "富有激励：鼓励别人参与、加入，并把每件事情变得有趣", value: "I" }
+            { text: "理想主义：以自己完美的标准来设想衡量现实", value: "I" },
+            { text: "自我放松：寻求真正轻松与享受的机会", value: "S" },
+            { text: "轻松与众不同：与众不同，独立而特别", value: "I" },
+            { text: "果断：迅速果断地做出决定", value: "D" }
         ]
     },
     {
         question: "14. 您更符合哪一项？",
         answers: [
-            { text: "感情外露：从不掩饰情感，喜好，交谈时常身不由己接触他人", value: "I" },
-            { text: "深沉：深刻并常常内省，对肤浅的交谈、消遣会厌恶", value: "C" },
-            { text: "果断：有很快做出判断与结论的能力", value: "D" },
-            { text: "幽默：语气平和而有冷静的幽默", value: "S" }
+            { text: "仔细：保守，有时间，观察细节", value: "C" },
+            { text: "扩展：愿意尝试新的事情和经历", value: "D" },
+            { text: "慷慨：自愿地做给别人的好事，而不想回报", value: "S" },
+            { text: "开放的：不成见地接受新事物", value: "I" }
         ]
     },
     {
         question: "15. 您更符合哪一项？",
         answers: [
-            { text: "调解者：经常居中调节不同的意见，以避免双方的冲突", value: "S" },
-            { text: "音乐性：爱好参与并有较深的鉴赏能力，因音乐的艺术性,而不是因为表演的乐趣", value: "C" },
-            { text: "发起人：高效率的推动者，是他人的领导者，闲不住", value: "D" },
-            { text: "喜交朋友：喜欢周旋聚会中，善交新朋友不把任何人当陌生人", value: "I" }
+            { text: "严谨：喜欢详尽有条理地做事，井井有条", value: "C" },
+            { text: "博爱：对所有人都很喜欢，没有主见", value: "S" },
+            { text: "挑战性：有冲劲，相信自己有可能解决困难", value: "D" },
+            { text: "感性：注重个人情感，与情感创作有关", value: "I" }
         ]
     },
     {
@@ -361,6 +361,7 @@ const questions = [
     }
 ];
 
+
 let currentQuestionIndex = 0;
 const userAnswers = { D: 0, I: 0, S: 0, C: 0 };
 
@@ -408,14 +409,16 @@ function showSummary() {
     const container = document.getElementById('questions-container');
     const userName = getUserName(); // 获取用户姓名
     const result = `
-        <div class="title">${userName} 的DISC结果</div>
+        <div class="title">${userName}</div>
         <p>D: ${userAnswers.D}</p>
         <p>I: ${userAnswers.I}</p>
         <p>S: ${userAnswers.S}</p>
         <p>C: ${userAnswers.C}</p>
     `;
     container.innerHTML = result;
-    const formattedResult = result.replace(/<[^>]*>/g, '');
+
+    const formattedResult = result.replace(/<\/?[^>]+(>|$)/g, '').replace(/\s+/g, '');
+    // 通过企业微信机器人推送结果
     pushToWeChat(userName, formattedResult);
 }
 
@@ -426,7 +429,7 @@ function pushToWeChat(userName, result) {
 
     fetch(webhookURL, {
         method: 'POST',
-	mode: 'no-cors', 
+        mode: 'no-cors', 
         headers: {
             'Content-Type': 'application/json',
         },
