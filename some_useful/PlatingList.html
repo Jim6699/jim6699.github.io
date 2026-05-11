@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>电镀供应商可承接清单</title>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "Microsoft YaHei", "PingFang SC", sans-serif; background: #f0f2f5; min-height: 100vh; display: flex; flex-direction: column; }
+.header { background: linear-gradient(135deg, #1a73e8, #0d47a1); color: #fff; padding: 16px 32px; font-size: 22px; font-weight: 600; letter-spacing: 2px; text-align: center; }
+.main { display: flex; flex: 1; overflow: hidden; }
+.left-panel { width: 520px; min-width: 520px; background: #fff; border-right: 1px solid #e0e0e0; overflow-y: auto; padding: 20px 24px 100px; }
+.right-panel { flex: 1; overflow-y: auto; padding: 20px 24px; background: #fafbfc; }
+.section { margin-bottom: 20px; }
+.section-title { font-size: 15px; font-weight: 600; color: #1a73e8; border-left: 4px solid #1a73e8; padding-left: 10px; margin-bottom: 12px; }
+label.field-label { display: block; font-size: 13px; color: #555; margin-bottom: 4px; font-weight: 500; }
+input[type="text"], input[type="number"], select { width: 100%; padding: 8px 12px; border: 1px solid #d0d0d0; border-radius: 6px; font-size: 14px; outline: none; transition: border-color .2s; }
+input[type="text"]:focus, input[type="number"]:focus, select:focus { border-color: #1a73e8; box-shadow: 0 0 0 2px rgba(26,115,232,.15); }
+input[type="number"] { -moz-appearance: textfield; }
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+.tag-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.tag { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 16px; font-size: 12px; cursor: pointer; border: 2px solid transparent; transition: all .2s; user-select: none; font-weight: 500; }
+.tag.selected { border-color: #1a73e8; box-shadow: 0 0 0 2px rgba(26,115,232,.18); }
+.tag:hover { opacity: .85; }
+.grinding-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+.grinding-row label { font-size: 13px; color: #444; min-width: 80px; }
+.grinding-row input[type="number"] { width: 70px; }
+.radio-group { display: flex; gap: 12px; align-items: center; }
+.radio-group label { display: flex; align-items: center; gap: 4px; font-size: 13px; color: #444; cursor: pointer; }
+.radio-group input[type="radio"] { accent-color: #1a73e8; }
+.plating-method-block { background: #f8f9fa; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; }
+.plating-method-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.plating-method-header select { width: 160px; }
+.plating-lines { display: flex; gap: 16px; flex-wrap: wrap; }
+.plating-lines .line-item { display: flex; align-items: center; gap: 6px; }
+.plating-lines .line-item label { font-size: 12px; color: #666; white-space: nowrap; }
+.plating-lines .line-item input { width: 60px; }
+.other-input-row { display: flex; gap: 8px; align-items: center; margin-top: 8px; }
+.other-input-row input { flex: 1; }
+.btn-add-other { padding: 6px 14px; background: #1a73e8; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; white-space: nowrap; }
+.btn-add-other:hover { background: #1558b0; }
+.bottom-bar { position: sticky; bottom: 0; left: 0; right: 0; background: #fff; border-top: 1px solid #e0e0e0; padding: 14px 24px; text-align: center; z-index: 10; }
+.btn-submit { padding: 12px 48px; background: linear-gradient(135deg, #1a73e8, #0d47a1); color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; letter-spacing: 2px; transition: background .2s; }
+.btn-submit:hover { background: linear-gradient(135deg, #1558b0, #0a3a8a); }
+.btn-export { padding: 10px 28px; background: #43a047; color: #fff; border: none; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; margin-bottom: 16px; }
+.btn-export:hover { background: #2e7d32; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+thead th { background: #1a73e8; color: #fff; padding: 10px 12px; text-align: left; font-weight: 500; white-space: nowrap; }
+tbody td { padding: 9px 12px; border-bottom: 1px solid #eee; vertical-align: top; }
+tbody tr:hover { background: #f0f6ff; }
+.btn-del { padding: 4px 12px; background: #e53935; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; }
+.btn-del:hover { background: #b71c1c; }
+.empty-tip { text-align: center; color: #aaa; padding: 40px 0; font-size: 15px; }
+.tag-mini { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; margin: 2px; font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="header">电镀供应商可承接清单</div>
+<div class="main">
+  <div class="left-panel">
+    <div class="section">
+      <div class="section-title">公司名称</div>
+      <input type="text" id="companyName" placeholder="请输入公司名称">
+    </div>
+
+    <div class="section">
+      <div class="section-title">其他可承接加工</div>
+      <div class="tag-group" id="otherProcessTags"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">研磨辅助</div>
+      <div class="grinding-row">
+        <label>石头研磨：机器</label>
+        <input type="number" id="stoneMachine" min="0" value="" placeholder="0">
+        <label>台</label>
+        <div class="radio-group">
+          <label><input type="radio" name="stoneType" value="内置"> 内置</label>
+          <label><input type="radio" name="stoneType" value="外发"> 外发</label>
+        </div>
+      </div>
+      <div class="grinding-row">
+        <label>磁力研磨：机器</label>
+        <input type="number" id="magneticMachine" min="0" value="" placeholder="0">
+        <label>台</label>
+        <div class="radio-group">
+          <label><input type="radio" name="magneticType" value="内置"> 内置</label>
+          <label><input type="radio" name="magneticType" value="外发"> 外发</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">主工艺 — 电镀基材</div>
+      <div class="tag-group" id="substrateTags"></div>
+      <div class="other-input-row">
+        <input type="text" id="otherSubstrateInput" placeholder="输入其他基材">
+        <button class="btn-add-other" id="btnAddOtherSubstrate">添加</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">主工艺 — 电镀方式</div>
+      <div class="plating-method-block">
+        <div class="plating-method-header">
+          <select id="platingMethodSelect">
+            <option value="">请选择电镀方式</option>
+          </select>
+        </div>
+        <div class="plating-lines" id="platingLinesArea">
+          <div class="line-item"><label>全自动产线</label><input type="number" id="autoLine" min="0" placeholder="0"><label>条</label></div>
+          <div class="line-item"><label>半自动产线</label><input type="number" id="semiLine" min="0" placeholder="0"><label>条</label></div>
+          <div class="line-item"><label>人工产线</label><input type="number" id="manualLine" min="0" placeholder="0"><label>条</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">电镀镀种</div>
+      <div class="tag-group" id="platingTypeTags"></div>
+      <div class="other-input-row">
+        <input type="text" id="otherPlatingTypeInput" placeholder="输入其他镀种">
+        <button class="btn-add-other" id="btnAddOtherType">添加</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="right-panel">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <h2 style="font-size:17px;color:#333;">清单预览</h2>
+      <button class="btn-export" id="btnExport">导出清单到 Excel</button>
+    </div>
+    <div class="table-wrap">
+      <table id="previewTable">
+        <thead>
+          <tr>
+            <th style="width:40px;">#</th>
+            <th>公司名称</th>
+            <th>其他可承接加工</th>
+            <th>研磨辅助</th>
+            <th>电镀基材</th>
+            <th>电镀方式</th>
+            <th>电镀镀种</th>
+            <th style="width:60px;">操作</th>
+          </tr>
+        </thead>
+        <tbody id="previewBody"></tbody>
+      </table>
+      <div class="empty-tip" id="emptyTip">暂无数据，请在左侧填写并添加</div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-bar">
+  <button class="btn-submit" id="btnAdd">添加到清单</button>
+</div>
+
+<script>
+(function() {
+  var OTHER_PROCESSES = [
+    '喷油','喷粉','清洗','铬化','钝化','水性电泳','阳极氧化','发黑','磷化','电解抛光','浸锌',
+    '丝印/移印','镭雕','水转印','磁控溅射'
+  ];
+  var OTHER_PROCESS_COLORS = [
+    '#e3f2fd','#fce4ec','#e8f5e9','#fff3e0','#f3e5f5','#e0f7fa','#fff9c4','#fbe9e7',
+    '#e8eaf6','#f1f8e9','#fce4ec','#e0f2f1','#ede7f6','#fff8e1','#e1f5fe'
+  ];
+
+  var SUBSTRATES = ['铜','铝','不锈钢','铁','磁铁','塑料','模具'];
+  var SUBSTRATE_COLORS = [
+    '#ffe0b2','#c8e6c9','#b3e5fc','#ef9a9a','#ce93d8','#ffcc80','#b2dfdb'
+  ];
+
+  var PLATING_METHODS = ['挂镀','滚镀','局部镀','连续镀','点镀','刷镀','振镀','真空镀'];
+  var PLATING_METHOD_COLORS = [
+    '#bbdefb','#c8e6c9','#ffe0b2','#e1bee7','#b2dfdb','#ffccbc','#fff9c4','#d1c4e9'
+  ];
+
+  var PLATING_TYPES = [
+    '硬金','软金','珍珠金','24K金','仿金','玫瑰金','硬银','软银','铂','钯','铑','钌',
+    '铝','黄铜','青古铜','红古铜','铟','钛','枪钴','亮锡','雾锡','甲基磺酸锡','白锡铜',
+    '亮镍','雾镍','低磷化学镍','中磷化学镍','高磷化学镍','珍珠镍','黑镍','钯镍','沙镍',
+    '镍钨','银钨','氨基磺酸镍','镍底镀锡','三价环保铬','三价白/黑铬','代铬','蓝锌','白锌',
+    '彩锌','黑锌','蓝白锌','锌镍合金','铜锡锌'
+  ];
+  var PLATING_TYPE_COLORS = [];
+  var colorPool = [
+    '#e3f2fd','#fce4ec','#e8f5e9','#fff3e0','#f3e5f5','#e0f7fa','#fff9c4','#fbe9e7',
+    '#e8eaf6','#f1f8e9','#fce4ec','#e0f2f1','#ede7f6','#fff8e1','#e1f5fe','#f3e5f5',
+    '#e8f5e9','#fff3e0','#e3f2fd','#fce4ec','#e0f7fa','#fff9c4','#fbe9e7','#e8eaf6',
+    '#f1f8e9','#fce4ec','#e0f2f1','#ede7f6','#fff8e1','#e1f5fe','#f3e5f5','#e8f5e9',
+    '#fff3e0','#e3f2fd','#fce4ec','#e0f7fa','#fff9c4','#fbe9e7','#e8eaf6','#f1f8e9',
+    '#fce4ec','#e0f2f1','#ede7f6','#fff8e1','#e1f5fe'
+  ];
+  PLATING_TYPE_COLORS = colorPool.slice(0, PLATING_TYPES.length);
+
+  var customSubstrates = [];
+  var customSubstrateColors = [];
+
+  var customPlatingTypes = [];
+  var customPlatingTypeColors = [];
+
+  var selectedOtherProcesses = [];
+  var selectedSubstrates = [];
+  var selectedPlatingTypes = [];
+
+  var dataList = [];
+
+  function loadPersisted() {
+    var cn = localStorage.getItem('ep_companyName');
+    if (cn) document.getElementById('companyName').value = cn;
+
+    var op = localStorage.getItem('ep_otherProcesses');
+    if (op) selectedOtherProcesses = JSON.parse(op);
+
+    var sm = localStorage.getItem('ep_stoneMachine');
+    if (sm !== null) document.getElementById('stoneMachine').value = sm;
+    var st = localStorage.getItem('ep_stoneType');
+    if (st) { var r = document.querySelector('input[name="stoneType"][value="'+st+'"]'); if(r) r.checked=true; }
+
+    var mm = localStorage.getItem('ep_magneticMachine');
+    if (mm !== null) document.getElementById('magneticMachine').value = mm;
+    var mt = localStorage.getItem('ep_magneticType');
+    if (mt) { var r2 = document.querySelector('input[name="magneticType"][value="'+mt+'"]'); if(r2) r2.checked=true; }
+
+    var dl = localStorage.getItem('ep_dataList');
+    if (dl) dataList = JSON.parse(dl);
+
+    var cs = localStorage.getItem('ep_customSubstrates');
+    if (cs) { customSubstrates = JSON.parse(cs); }
+    var csc = localStorage.getItem('ep_customSubstrateColors');
+    if (csc) { customSubstrateColors = JSON.parse(csc); }
+
+    var cpt = localStorage.getItem('ep_customPlatingTypes');
+    if (cpt) { customPlatingTypes = JSON.parse(cpt); }
+    var cptc = localStorage.getItem('ep_customPlatingTypeColors');
+    if (cptc) { customPlatingTypeColors = JSON.parse(cptc); }
+  }
+
+  function savePersisted() {
+    localStorage.setItem('ep_companyName', document.getElementById('companyName').value);
+    localStorage.setItem('ep_otherProcesses', JSON.stringify(selectedOtherProcesses));
+    localStorage.setItem('ep_stoneMachine', document.getElementById('stoneMachine').value);
+    var st = document.querySelector('input[name="stoneType"]:checked');
+    localStorage.setItem('ep_stoneType', st ? st.value : '');
+    localStorage.setItem('ep_magneticMachine', document.getElementById('magneticMachine').value);
+    var mt = document.querySelector('input[name="magneticType"]:checked');
+    localStorage.setItem('ep_magneticType', mt ? mt.value : '');
+    localStorage.setItem('ep_dataList', JSON.stringify(dataList));
+    localStorage.setItem('ep_customSubstrates', JSON.stringify(customSubstrates));
+    localStorage.setItem('ep_customSubstrateColors', JSON.stringify(customSubstrateColors));
+    localStorage.setItem('ep_customPlatingTypes', JSON.stringify(customPlatingTypes));
+    localStorage.setItem('ep_customPlatingTypeColors', JSON.stringify(customPlatingTypeColors));
+  }
+
+  function renderOtherProcessTags() {
+    var container = document.getElementById('otherProcessTags');
+    container.innerHTML = '';
+    OTHER_PROCESSES.forEach(function(name, i) {
+      var tag = document.createElement('span');
+      tag.className = 'tag' + (selectedOtherProcesses.indexOf(name) >= 0 ? ' selected' : '');
+      tag.style.background = OTHER_PROCESS_COLORS[i % OTHER_PROCESS_COLORS.length];
+      tag.textContent = name;
+      tag.onclick = function() {
+        var idx = selectedOtherProcesses.indexOf(name);
+        if (idx >= 0) selectedOtherProcesses.splice(idx, 1);
+        else selectedOtherProcesses.push(name);
+        savePersisted();
+        renderOtherProcessTags();
+      };
+      container.appendChild(tag);
+    });
+  }
+
+  function getAllSubstrates() {
+    return SUBSTRATES.concat(customSubstrates);
+  }
+
+  function getAllSubstrateColors() {
+    return SUBSTRATE_COLORS.concat(customSubstrateColors);
+  }
+
+  function renderSubstrateTags() {
+    var container = document.getElementById('substrateTags');
+    container.innerHTML = '';
+    var all = getAllSubstrates();
+    var colors = getAllSubstrateColors();
+    all.forEach(function(name, i) {
+      var tag = document.createElement('span');
+      tag.className = 'tag' + (selectedSubstrates.indexOf(name) >= 0 ? ' selected' : '');
+      tag.style.background = colors[i % colors.length];
+      tag.textContent = name;
+      tag.onclick = function() {
+        var idx = selectedSubstrates.indexOf(name);
+        if (idx >= 0) selectedSubstrates.splice(idx, 1);
+        else selectedSubstrates.push(name);
+        renderSubstrateTags();
+      };
+      container.appendChild(tag);
+    });
+  }
+
+  function renderPlatingMethodSelect() {
+    var sel = document.getElementById('platingMethodSelect');
+    sel.innerHTML = '<option value="">请选择电镀方式</option>';
+    PLATING_METHODS.forEach(function(name) {
+      var opt = document.createElement('option');
+      opt.value = name;
+      opt.textContent = name;
+      sel.appendChild(opt);
+    });
+  }
+
+  function getAllPlatingTypes() {
+    return PLATING_TYPES.concat(customPlatingTypes);
+  }
+
+  function getAllPlatingTypeColors() {
+    return PLATING_TYPE_COLORS.concat(customPlatingTypeColors);
+  }
+
+  function renderPlatingTypeTags() {
+    var container = document.getElementById('platingTypeTags');
+    container.innerHTML = '';
+    var all = getAllPlatingTypes();
+    var colors = getAllPlatingTypeColors();
+    all.forEach(function(name, i) {
+      var tag = document.createElement('span');
+      tag.className = 'tag' + (selectedPlatingTypes.indexOf(name) >= 0 ? ' selected' : '');
+      tag.style.background = colors[i % colors.length];
+      tag.textContent = name;
+      tag.onclick = function() {
+        var idx = selectedPlatingTypes.indexOf(name);
+        if (idx >= 0) selectedPlatingTypes.splice(idx, 1);
+        else selectedPlatingTypes.push(name);
+        renderPlatingTypeTags();
+      };
+      container.appendChild(tag);
+    });
+  }
+
+  function renderTable() {
+    var tbody = document.getElementById('previewBody');
+    var tip = document.getElementById('emptyTip');
+    tbody.innerHTML = '';
+    if (dataList.length === 0) {
+      tip.style.display = 'block';
+      return;
+    }
+    tip.style.display = 'none';
+    dataList.forEach(function(item, idx) {
+      var tr = document.createElement('tr');
+
+      var tdIdx = document.createElement('td');
+      tdIdx.textContent = idx + 1;
+      tr.appendChild(tdIdx);
+
+      var tdCompany = document.createElement('td');
+      tdCompany.textContent = item.companyName;
+      tr.appendChild(tdCompany);
+
+      var tdOther = document.createElement('td');
+      if (item.otherProcesses && item.otherProcesses.length > 0) {
+        item.otherProcesses.forEach(function(p) {
+          var ci = OTHER_PROCESSES.indexOf(p);
+          var c = ci >= 0 ? OTHER_PROCESS_COLORS[ci] : '#f5f5f5';
+          var span = document.createElement('span');
+          span.className = 'tag-mini';
+          span.style.background = c;
+          span.textContent = p;
+          tdOther.appendChild(span);
+        });
+      }
+      tr.appendChild(tdOther);
+
+      var tdGrinding = document.createElement('td');
+      var gParts = [];
+      if (item.stoneMachine && parseInt(item.stoneMachine) > 0) {
+        gParts.push('石头研磨:' + item.stoneMachine + '台(' + (item.stoneType || '未选') + ')');
+      }
+      if (item.magneticMachine && parseInt(item.magneticMachine) > 0) {
+        gParts.push('磁力研磨:' + item.magneticMachine + '台(' + (item.magneticType || '未选') + ')');
+      }
+      tdGrinding.textContent = gParts.length > 0 ? gParts.join('；') : '—';
+      tr.appendChild(tdGrinding);
+
+      var tdSubstrate = document.createElement('td');
+      if (item.substrates && item.substrates.length > 0) {
+        var allS = getAllSubstrates();
+        var allSC = getAllSubstrateColors();
+        item.substrates.forEach(function(s) {
+          var ci = allS.indexOf(s);
+          var c = ci >= 0 ? allSC[ci] : '#f5f5f5';
+          var span = document.createElement('span');
+          span.className = 'tag-mini';
+          span.style.background = c;
+          span.textContent = s;
+          tdSubstrate.appendChild(span);
+        });
+      }
+      tr.appendChild(tdSubstrate);
+
+      var tdMethod = document.createElement('td');
+      if (item.platingMethod) {
+        var mi = PLATING_METHODS.indexOf(item.platingMethod);
+        var mc = mi >= 0 ? PLATING_METHOD_COLORS[mi] : '#f5f5f5';
+        var mspan = document.createElement('span');
+        mspan.className = 'tag-mini';
+        mspan.style.background = mc;
+        mspan.textContent = item.platingMethod;
+        tdMethod.appendChild(mspan);
+        var lines = [];
+        if (item.autoLine && parseInt(item.autoLine) > 0) lines.push('全自动' + item.autoLine + '条');
+        if (item.semiLine && parseInt(item.semiLine) > 0) lines.push('半自动' + item.semiLine + '条');
+        if (item.manualLine && parseInt(item.manualLine) > 0) lines.push('人工' + item.manualLine + '条');
+        if (lines.length > 0) {
+          tdMethod.appendChild(document.createTextNode(' ' + lines.join(' ')));
+        }
+      }
+      tr.appendChild(tdMethod);
+
+      var tdTypes = document.createElement('td');
+      if (item.platingTypes && item.platingTypes.length > 0) {
+        var allT = getAllPlatingTypes();
+        var allC = getAllPlatingTypeColors();
+        item.platingTypes.forEach(function(t) {
+          var ci = allT.indexOf(t);
+          var c = ci >= 0 ? allC[ci] : '#f5f5f5';
+          var span = document.createElement('span');
+          span.className = 'tag-mini';
+          span.style.background = c;
+          span.textContent = t;
+          tdTypes.appendChild(span);
+        });
+      }
+      tr.appendChild(tdTypes);
+
+      var tdAction = document.createElement('td');
+      var btnDel = document.createElement('button');
+      btnDel.className = 'btn-del';
+      btnDel.textContent = '删除';
+      btnDel.onclick = function() {
+        dataList.splice(idx, 1);
+        savePersisted();
+        renderTable();
+      };
+      tdAction.appendChild(btnDel);
+      tr.appendChild(tdAction);
+
+      tbody.appendChild(tr);
+    });
+  }
+
+  function resetForm() {
+    selectedSubstrates = [];
+    selectedPlatingTypes = [];
+    document.getElementById('platingMethodSelect').value = '';
+    document.getElementById('autoLine').value = '';
+    document.getElementById('semiLine').value = '';
+    document.getElementById('manualLine').value = '';
+    document.getElementById('otherPlatingTypeInput').value = '';
+    document.getElementById('otherSubstrateInput').value = '';
+    renderSubstrateTags();
+    renderPlatingTypeTags();
+  }
+
+  document.getElementById('btnAdd').addEventListener('click', function() {
+    var companyName = document.getElementById('companyName').value.trim();
+    if (!companyName) { alert('请输入公司名称'); return; }
+
+    var platingMethod = document.getElementById('platingMethodSelect').value;
+    var autoLine = document.getElementById('autoLine').value || '0';
+    var semiLine = document.getElementById('semiLine').value || '0';
+    var manualLine = document.getElementById('manualLine').value || '0';
+
+    if (!platingMethod) { alert('请选择电镀方式'); return; }
+    if (selectedSubstrates.length === 0) { alert('请至少选择一个电镀基材'); return; }
+    if (selectedPlatingTypes.length === 0) { alert('请至少选择一个电镀镀种'); return; }
+
+    var stoneMachine = document.getElementById('stoneMachine').value || '0';
+    var stoneType = (document.querySelector('input[name="stoneType"]:checked') || {}).value || '';
+    var magneticMachine = document.getElementById('magneticMachine').value || '0';
+    var magneticType = (document.querySelector('input[name="magneticType"]:checked') || {}).value || '';
+
+    var entry = {
+      companyName: companyName,
+      otherProcesses: selectedOtherProcesses.slice(),
+      stoneMachine: stoneMachine,
+      stoneType: stoneType,
+      magneticMachine: magneticMachine,
+      magneticType: magneticType,
+      substrates: selectedSubstrates.slice(),
+      platingMethod: platingMethod,
+      autoLine: autoLine,
+      semiLine: semiLine,
+      manualLine: manualLine,
+      platingTypes: selectedPlatingTypes.slice()
+    };
+
+    dataList.push(entry);
+    savePersisted();
+    renderTable();
+    resetForm();
+  });
+
+  document.getElementById('btnAddOtherType').addEventListener('click', function() {
+    var input = document.getElementById('otherPlatingTypeInput');
+    var val = input.value.trim();
+    if (!val) return;
+    if (getAllPlatingTypes().indexOf(val) >= 0) { alert('该镀种已存在'); return; }
+    customPlatingTypes.push(val);
+    var hue = (customPlatingTypeColors.length * 47 + 30) % 360;
+    customPlatingTypeColors.push('hsl(' + hue + ',70%,92%)');
+    selectedPlatingTypes.push(val);
+    input.value = '';
+    savePersisted();
+    renderPlatingTypeTags();
+  });
+
+  document.getElementById('otherPlatingTypeInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') document.getElementById('btnAddOtherType').click();
+  });
+
+  document.getElementById('btnAddOtherSubstrate').addEventListener('click', function() {
+    var input = document.getElementById('otherSubstrateInput');
+    var val = input.value.trim();
+    if (!val) return;
+    if (getAllSubstrates().indexOf(val) >= 0) { alert('该基材已存在'); return; }
+    customSubstrates.push(val);
+    var hue = (customSubstrateColors.length * 67 + 20) % 360;
+    customSubstrateColors.push('hsl(' + hue + ',65%,88%)');
+    selectedSubstrates.push(val);
+    input.value = '';
+    savePersisted();
+    renderSubstrateTags();
+  });
+
+  document.getElementById('otherSubstrateInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') document.getElementById('btnAddOtherSubstrate').click();
+  });
+
+  document.getElementById('companyName').addEventListener('input', function() {
+    localStorage.setItem('ep_companyName', this.value);
+  });
+
+  document.getElementById('stoneMachine').addEventListener('input', function() {
+    localStorage.setItem('ep_stoneMachine', this.value);
+  });
+  document.getElementById('magneticMachine').addEventListener('input', function() {
+    localStorage.setItem('ep_magneticMachine', this.value);
+  });
+  document.querySelectorAll('input[name="stoneType"]').forEach(function(r) {
+    r.addEventListener('change', function() { localStorage.setItem('ep_stoneType', this.value); });
+  });
+  document.querySelectorAll('input[name="magneticType"]').forEach(function(r) {
+    r.addEventListener('change', function() { localStorage.setItem('ep_magneticType', this.value); });
+  });
+
+  document.getElementById('btnExport').addEventListener('click', function() {
+    if (dataList.length === 0) { alert('暂无数据可导出'); return; }
+    var rows = dataList.map(function(item, idx) {
+      return {
+        '序号': idx + 1,
+        '公司名称': item.companyName,
+        '其他可承接加工': (item.otherProcesses || []).join('、'),
+        '石头研磨(台)': item.stoneMachine || '0',
+        '石头研磨方式': item.stoneType || '',
+        '磁力研磨(台)': item.magneticMachine || '0',
+        '磁力研磨方式': item.magneticType || '',
+        '电镀基材': (item.substrates || []).join('、'),
+        '电镀方式': item.platingMethod || '',
+        '全自动产线(条)': item.autoLine || '0',
+        '半自动产线(条)': item.semiLine || '0',
+        '人工产线(条)': item.manualLine || '0',
+        '电镀镀种': (item.platingTypes || []).join('、')
+      };
+    });
+    var ws = XLSX.utils.json_to_sheet(rows);
+    var wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, '电镀供应商清单');
+    ws['!cols'] = [
+      {wch:6},{wch:20},{wch:30},{wch:12},{wch:12},{wch:12},{wch:12},{wch:16},
+      {wch:10},{wch:14},{wch:14},{wch:14},{wch:40}
+    ];
+    XLSX.writeFile(wb, (document.getElementById('companyName').value.trim() || '未知公司') + '-电镀供应商可承接清单-' + dataList.length + '条数据.xlsx');
+  });
+
+  loadPersisted();
+  renderOtherProcessTags();
+  renderSubstrateTags();
+  renderPlatingMethodSelect();
+  renderPlatingTypeTags();
+  renderTable();
+})();
+</script>
+</body>
+</html>
